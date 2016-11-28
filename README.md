@@ -30,4 +30,7 @@ see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
-* **Matthew Skolaut** - *Initial work* -
+* **Matthew Skolaut** - *Member* -
+* **Ryan Terry** - *Member* -
+* **Sharon** - *Member* -
+* **Artisia Susanto** - *Member* -
