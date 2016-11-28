@@ -15,17 +15,24 @@ int Sorted_button::getid()
 }
 
 void Sorted_button::setid(int new_id)
+/*
+    Set id of button
+*/
 {
     id = new_id;
 }
 
 bool Sorted_button::operator==(Sorted_button b)
+/*
+    Compare buttons via id
+*/
 {
     return id == b.getid();
 }
 
 bool Sorted_button::cmp(Sorted_button a, Sorted_button b)
 /*
+    Use to sort buttons via custom comparison function
 */
 {
     return a.getid() < b.getid();
