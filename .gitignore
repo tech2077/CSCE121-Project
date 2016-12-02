@@ -3,4 +3,7 @@
 *.o
 *.dSYM
 *.swp
+build
+build/*
 .DS_Store
+.clang_complete

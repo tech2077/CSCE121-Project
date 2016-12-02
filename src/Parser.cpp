@@ -12,12 +12,12 @@ double Parser::parse_expression(std::string input)
 double Parser::factorial(double n)
 /*
     compute factorial of n
-    return 0 for values greater
+    throw error for values greater
     than 9 for reasonable ouput size
 */
 {
     if(n > 9)
-        return 0;
+        throw std::logic_error("To large");
     
     int total = 1;
 
@@ -115,7 +115,6 @@ double Parser::expression()
     Token t = ts.get();        // get the next token from token stream
 
     while(true) {
-        std::cout << "Token: " << t.kind << std::endl;
         switch(t.kind) {
         case '+':
             left += term();    // evaluate Term and add

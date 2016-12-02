@@ -1,7 +1,7 @@
 #include "Tile_selector.h"
 #include <iostream>
 
-Tile_selector::Tile_selector(int x, int y, int x_spacing, int y_spacing, int x_tile_size, int y_tile_size, Fl_Callback* callback)
+Tile_selector::Tile_selector(int x, int y, int x_spacing, int y_spacing, int x_tile_size, int y_tile_size, Fl_Callback* callback, void* data)
 /*
     Constructor for Tile_selector
 */
@@ -12,9 +12,12 @@ Tile_selector::Tile_selector(int x, int y, int x_spacing, int y_spacing, int x_t
     , x_tile_size(x_tile_size)
     , y_tile_size(y_tile_size)
     , tile_callback(callback)
+    , data(data)
 {
     bottom_y = y + y_tile_size + y_spacing;
-    total = new Fl_Output(0,0,100,20);
+    total = new Fl_Output(200,5,175,40,"Current Score");
+    total->textsize(20);
+    total->labelsize(17);
 }
 
 Tile_selector::~Tile_selector()
@@ -36,12 +39,21 @@ void Tile_selector::add_buttons(std::vector<std::string> names)
     Take a vector of names and turn into buttons
 */
 {
+    // Set size of selector
+    size = names.size();
+
+    void** packed_data;
+    packed_data = new void* [2];
+
+    packed_data[0] = (void*)this;
+    packed_data[1] = (void*)data;
+
     // Go through vector of names and line buttons up on top row onto 
     // top vector
     for (unsigned int i = 0; i < names.size(); i++) {
         std::string* num_label = new std::string(names[i]);
         Sorted_button* b = new Sorted_button(x + x_spacing * i, top_y, x_tile_size, y_tile_size, num_label->c_str(), i);
-        b->callback(tile_callback, (void*)this);
+        b->callback(tile_callback, (void*)packed_data);
         top.push_back(b);
     }
 }

@@ -10,7 +10,7 @@
 
 class Tile_selector {
 public:
-    Tile_selector(int x, int y, int x_spacing, int y_spacing, int x_tile_size, int y_tile_size, Fl_Callback* callback);
+    Tile_selector(int x, int y, int x_spacing, int y_spacing, int x_tile_size, int y_tile_size, Fl_Callback* callback, void* data=NULL);
     ~Tile_selector();
     void redraw();
     void add_buttons(std::vector<std::string> names);
@@ -20,6 +20,7 @@ public:
     std::vector<Sorted_button*> get_top();
     std::vector<Sorted_button*> get_bottom();
     void set_total(const char* text);
+    int get_size() { return size; };
 
 private:
     std::vector<Sorted_button*> top; // top row
@@ -30,9 +31,11 @@ private:
     int y_spacing; // horizontal spacing between tiles
     int x_tile_size; // x size of tile
     int y_tile_size; // y size of tile
+    void* data; // optional extra data to callback
     Fl_Callback* tile_callback; // callback for all tile buttons
     int bottom_y; // bottom y coordinate
     Fl_Output* total; // output space for selector
+    int size = 0;
 };
 
 #endif
