@@ -14,8 +14,11 @@ Tile_selector::Tile_selector(int x, int y, int x_spacing, int y_spacing, int x_t
     , tile_callback(callback)
     , data(data)
 {
+    // calculate spacing
     bottom_y = y + y_tile_size + y_spacing;
+    // scorebox
     total = new Fl_Output(200,5,175,40,"Current Score");
+    // font settings
     total->textsize(20);
     total->labelsize(17);
 }

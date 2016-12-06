@@ -16,15 +16,15 @@ double Parser::factorial(double n)
     than 9 for reasonable ouput size
 */
 {
-    if(n > 9)
+    if(n > 9) // make n! of n>9 invalid
         throw std::logic_error("To large");
     
-    int total = 1;
+    int total = 1; // first number 
 
-    for(int i = 1; i <= n; i++)
+    for(int i = 1; i <= n; i++) // iterate over to get factorial
         total *= i;
 
-    return total;
+    return total; // return value
 }
 
 double Parser::primary()

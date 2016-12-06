@@ -3,8 +3,11 @@
 Sorted_button::Sorted_button(int X, int Y, int W, int H, const char* L, int id)
     : Fl_Button(X, Y, W, H, L)
     , id(id)
-{
-}
+/*
+    Constructor for sorted button
+    An extension of button in order to easily be sorted in tile selector
+*/
+{}
 
 int Sorted_button::getid()
 /*

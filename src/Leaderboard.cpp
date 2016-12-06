@@ -1,4 +1,5 @@
 #include "Leaderboard.h"
+#include <sstream>
 #include <iostream>
 #include <fstream>
 #include <algorithm>
@@ -25,6 +26,23 @@ Load leaderboard from file
     // Ensure players are sorted
     std::sort(players.begin(), players.end(), Player().cmp);
 }
+void Leaderboard::loadString(std::string in)
+/*
+Load leaderboard from string
+*/
+{
+    std::stringstream buf;
+    buf.str(in);
+    Player p;
+
+    // Load players from file
+    while(buf >> p) {
+        addPlayer(p);
+    }
+
+    // Ensure players are sorted
+    std::sort(players.begin(), players.end(), Player().cmp);
+}
 
 void Leaderboard::writeFile()
 /*
@@ -47,11 +65,31 @@ Write leaderboard to file
     outfile.close();
 }
 
+std::string Leaderboard::writeString()
+/*
+Write leaderboard to file
+*/
+{
+    std::stringstream buf;
+
+    // Sort players by score
+    std::sort(players.begin(), players.end(), Player().cmp);
+
+    int i = 0;
+    for(auto p : players) {
+        buf << p << std::endl;
+        if(++i >= 5) // Top five playeres
+            break;
+    }
+
+    return buf.str();
+}
+
 void Leaderboard::addPlayer(Player p)
 /*
 Add player to leaderboard
 */
 {
-    players.push_back(p);
-    std::sort(players.begin(), players.end());
+    players.push_back(p); // push back player onto internal vector
+    std::sort(players.begin(), players.end()); // sort player
 }

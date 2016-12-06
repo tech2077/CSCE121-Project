@@ -15,8 +15,12 @@ You will need [FLTK 1.3](http://www.fltk.org/software.php) or greater installed 
 ### Running
 
 ```
+cd ./CSCE121_Project
+mkdir build
+cd ./build
+cmake ..
 make
-./main.exe
+./main
 ```
 
 ## Built With
