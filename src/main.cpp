@@ -175,7 +175,7 @@ void set_game(Fl_Window* window, int level, const char* name)
 
     // loadfile and write out scores to scorelist
     l.loadFile();
-    scorebox->value(l.writeString().c_str());
+    scorebox->value((l.writeString() + name).c_str());
 
     // generate tiles 
     Deck_Generator generator(level);
